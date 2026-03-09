@@ -1,5 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { ShoppingCart } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 import badge1 from "@/assets/badge-blend1.jpg";
 import badge2 from "@/assets/badge-blend2.jpg";
 import badge3 from "@/assets/badge-blend3.jpg";
@@ -49,9 +51,13 @@ const blends = [
   },
 ];
 
+const parsePrice = (priceStr: string) =>
+  parseFloat(priceStr.replace(".", "").replace(",", ".").replace(/[^\d.]/g, ""));
+
 const BlendsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const { addItem } = useCart();
 
   return (
     <section ref={ref} id="shop" className="py-32 bg-secondary/30">
@@ -103,8 +109,18 @@ const BlendsSection = () => {
                 </p>
                 <div className="flex items-center justify-center gap-4">
                   <span className="text-primary font-display text-xl">{blend.price}</span>
-                  <button className="text-xs tracking-[0.15em] font-body font-light text-foreground/50 hover:text-primary border-b border-foreground/20 hover:border-primary pb-0.5 transition-all duration-300 uppercase">
-                    Dettagli
+                  <button
+                    onClick={() => addItem({
+                      id: blend.name.toLowerCase().replace(/\s+/g, "-"),
+                      name: blend.name,
+                      price: parsePrice(blend.price),
+                      image: blend.badge,
+                      origin: blend.origin,
+                    })}
+                    className="flex items-center gap-2 text-xs tracking-[0.15em] font-body font-light text-foreground/50 hover:text-primary border-b border-foreground/20 hover:border-primary pb-0.5 transition-all duration-300 uppercase"
+                  >
+                    <ShoppingCart size={12} />
+                    Aggiungi
                   </button>
                 </div>
               </div>
