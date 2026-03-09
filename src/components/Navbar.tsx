@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ShoppingCart, Search, User } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 import logo from "@/assets/logo-fratelli-milano.png";
 
 const navLinks = [
