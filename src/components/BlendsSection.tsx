@@ -49,9 +49,13 @@ const blends = [
   },
 ];
 
+const parsePrice = (priceStr: string) =>
+  parseFloat(priceStr.replace(".", "").replace(",", ".").replace(/[^\d.]/g, ""));
+
 const BlendsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const { addItem } = useCart();
 
   return (
     <section ref={ref} id="shop" className="py-32 bg-secondary/30">
