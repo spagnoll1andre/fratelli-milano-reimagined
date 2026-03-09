@@ -107,8 +107,18 @@ const BlendsSection = () => {
                 </p>
                 <div className="flex items-center justify-center gap-4">
                   <span className="text-primary font-display text-xl">{blend.price}</span>
-                  <button className="text-xs tracking-[0.15em] font-body font-light text-foreground/50 hover:text-primary border-b border-foreground/20 hover:border-primary pb-0.5 transition-all duration-300 uppercase">
-                    Dettagli
+                  <button
+                    onClick={() => addItem({
+                      id: blend.name.toLowerCase().replace(/\s+/g, "-"),
+                      name: blend.name,
+                      price: parsePrice(blend.price),
+                      image: blend.badge,
+                      origin: blend.origin,
+                    })}
+                    className="flex items-center gap-2 text-xs tracking-[0.15em] font-body font-light text-foreground/50 hover:text-primary border-b border-foreground/20 hover:border-primary pb-0.5 transition-all duration-300 uppercase"
+                  >
+                    <ShoppingCart size={12} />
+                    Aggiungi
                   </button>
                 </div>
               </div>

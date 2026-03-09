@@ -45,8 +45,16 @@ const Navbar = () => {
 
           {/* Icons */}
           <div className="hidden lg:flex items-center gap-5">
-            <button className="text-foreground/60 hover:text-primary transition-colors duration-300">
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="relative text-foreground/60 hover:text-primary transition-colors duration-300"
+            >
               <ShoppingCart size={18} strokeWidth={1.5} />
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 w-4 h-4 bg-primary text-primary-foreground text-[10px] font-body font-medium rounded-full flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
             </button>
             <button className="text-foreground/60 hover:text-primary transition-colors duration-300">
               <User size={18} strokeWidth={1.5} />
