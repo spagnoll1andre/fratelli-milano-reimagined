@@ -1,5 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { ShoppingCart } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 import badge1 from "@/assets/badge-blend1.jpg";
 import badge2 from "@/assets/badge-blend2.jpg";
 import badge3 from "@/assets/badge-blend3.jpg";
