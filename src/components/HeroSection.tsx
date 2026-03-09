@@ -31,7 +31,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="font-display text-5xl md:text-7xl lg:text-8xl font-light leading-[0.9] mb-8"
+            className="font-jakarta text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] mb-8"
           >
             <span className="text-gold-gradient">L'arte</span>
             <br />
